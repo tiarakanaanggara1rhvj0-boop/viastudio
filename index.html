@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080c10"><title>Zombie Apocalypse: Donation Chaos</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar"><div class="brand"><div class="brand-mark">☣</div><div><p class="eyebrow">LIVE ARCADE · PIXEL SURVIVAL</p><h1>ZOMBIE APOCALYPSE <span>DONATION CHAOS</span></h1></div></div><div class="live-status"><i></i> <span id="liveMode">CHECKING SERVER</span> <b id="clock">00:00</b></div></header>
+    <main class="layout">
+      <section class="game-column">
+        <div class="game-frame" id="gameFrame">
+          <canvas id="game" aria-label="Game zombie pixel-art"></canvas>
+          <div class="game-hud"><div class="hud-top"><div class="wave-box"><small>WAVE</small><b id="wave">01</b></div><div class="hud-center"><span>NECRO LABS · SECTOR 07</span><strong id="threat">THREAT LEVEL <em>LOW</em></strong></div><div class="kill-box"><small>ELIMINATED</small><b id="kills">000</b></div></div><div class="survivor-hud"><span>♥</span> SURVIVOR <div class="health"><i id="healthBar"></i></div><b id="healthText">100%</b></div></div>
+          <div class="toast" id="toast"><span>☣</span><div><small>DONATION CHAOS</small><b id="toastTitle">EVENT</b><p id="toastDetail"></p></div></div>
+          <div class="game-bottom"><div class="event-tag"><span class="pulse"></span><span id="eventText">SEKTOR AMAN · ZOMBIE TERDETEKSI</span></div><div class="combo" id="combo"><small>COMBO</small><b id="comboValue">x0</b></div></div>
+        </div>
+        <div class="game-foot"><span>▣ 9:16 VERTICAL OUTPUT</span><span>AUTO-SHOOT ENABLED</span><span><i class="green-dot"></i> <b id="connection">LOCAL SIMULATION</b></span></div>
+      </section>
+      <aside class="admin-panel">
+        <div class="panel-heading"><div><p class="eyebrow">CONTROL ROOM</p><h2>COMMAND CENTER</h2></div><button class="icon-button" id="pauseBtn" title="Jeda game">Ⅱ</button></div>
+        <div class="stats-grid"><div class="stat-card"><span>DONASI SESI</span><b id="totalDonations">Rp0</b><small>↗ <span id="donationCount">0 dukungan</span></small></div><div class="stat-card"><span>ZOMBIE AKTIF</span><b id="zombieCount">00</b><small class="muted">di arena sekarang</small></div></div>
+        <section class="admin-section"><div class="section-title"><h3>SIMULASI DONASI</h3><span class="test-badge">TEST MODE</span></div><label class="field-label" for="donorName">NAMA DONATUR</label><input id="donorName" class="text-input" maxlength="32" value="Penonton" placeholder="Nama donatur"><div class="tier-grid">
+          <button class="tier" data-amount="1000"><span>☣</span><b>Rp1K</b><small>5 ZOMBIE</small></button><button class="tier" data-amount="2000"><span>➜</span><b>Rp2K</b><small>RUNNER</small></button><button class="tier" data-amount="5000"><span>♟</span><b>Rp5K</b><small>GIANT</small></button><button class="tier" data-amount="10000"><span>☠</span><b>Rp10K</b><small>TSUNAMI</small></button><button class="tier" data-amount="15000"><span>✦</span><b>Rp15K</b><small>METEOR</small></button><button class="tier" data-amount="25000"><span>♛</span><b>Rp25K</b><small>BOSS</small></button><button class="tier tier-apoc" data-amount="50000"><span>☢</span><b>Rp50K</b><small>APOCALYPSE</small></button><button class="tier tier-random" id="randomBtn"><span>?</span><b>RANDOM</b><small>KEJUTAN</small></button>
+        </div><div class="custom-row"><input id="customAmount" type="number" min="1000" step="1000" placeholder="Nominal lain (Rp)"><button id="customBtn">TRIGGER ↗</button></div></section>
+        <section class="admin-section quick-setup"><div class="section-title"><h3>HUBUNGKAN WEBHOOK</h3><span class="test-badge">LANGKAH CEPAT</span></div><p><b>SociaBuzz:</b> Railway Variables isi <code>SOCIABUZZ_WEBHOOK_TOKEN</code> dengan token dari SociaBuzz. Pasang URL `/sociabuzz` di pengaturan TRIBE Webhook.<br><b>Saweria:</b> perlu streaming key yang valid; gunakan endpoint `/saweria`.<br>Untuk siaran, masukkan URL overlay ke TikTok LIVE Studio.</p><label class="field-label" for="sociabuzzWebhookUrl">URL WEBHOOK SOCIABUZZ</label><div class="copy-row"><input id="sociabuzzWebhookUrl" class="text-input" readonly aria-label="URL webhook SociaBuzz"><button id="copySociabuzzWebhook">SALIN</button></div><label class="field-label" for="webhookUrl">URL WEBHOOK SAWERIA</label><div class="copy-row"><input id="webhookUrl" class="text-input" readonly aria-label="URL webhook Saweria"><button id="copyWebhook">SALIN</button></div><div class="setup-actions"><button id="copyOverlay">SALIN LINK OVERLAY</button><button id="copyDonate">SALIN LINK SAWERIA</button></div><input id="saweriaUrl" class="text-input" placeholder="https://saweria.co/username" aria-label="Link Saweria"><small id="setupHint">Webhook SociaBuzz aktif setelah token yang sama disimpan sebagai variabel Railway dan service selesai deploy.</small></section>
+        <section class="admin-section donors-section"><div class="section-title"><h3>TOP SURVIVORS</h3><span class="live-label"><i></i> LIVE</span></div><div id="donorList" class="donor-list"><div class="empty-state">Belum ada donasi.<br>Jadilah yang pertama memicu chaos!</div></div></section>
+        <section class="admin-section queue-section"><div class="section-title"><h3>CHAOS QUEUE</h3><span class="queue-count" id="queueCount">0</span></div><div class="queue-track" id="queueTrack"><span>Tidak ada event menunggu</span></div></section>
+        <div class="panel-footer"><span><i class="green-dot"></i> SIMULATOR AKTIF</span><span>v1.0.0</span></div>
+      </aside>
+    </main>
+    <footer class="page-footer"><span>BUILT FOR THE APOCALYPSE</span><span>Survivor tidak akan menyerah. Terima kasih telah mendukung! ♥</span></footer>
+  </div>
+  <script type="module" src="/game.js"></script>
+</body></html>
